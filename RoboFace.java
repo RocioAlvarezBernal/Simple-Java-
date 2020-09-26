@@ -22,41 +22,38 @@ private static final int HEAD_HEIGHT = 125;
 private static final int EYE_RADIUS = 20; 
 private static final int MOUTH_WIDTH = 40;
 private static final int MOUTH_HEIGHT = 20;
-	
+double canvasXCenter = getWidth() / 2;
+double canvasYCenter = getHeight() / 2;
+
 	public void run() {
-		head();
-//		add( head() );
-		leftEye();
-		rightEye();
-		mouth();
+		buildFace(); // first build a face then set it all to center 
 	}
 
 //head should be centered gray with black outline 
 	private void head() {
 //x location 
-		double canvasWidth= getWidth(); 
-		double canvasXCenter= canvasWidth/2;
+		double canvasXCenter= getWidth() /2;
 		double halfHeadWidth = HEAD_WIDTH / 2;
 		double xDimCenter = canvasXCenter - halfHeadWidth;
 		
 // y location 
-		double canvasHeight= getHeight(); 
-		double canvasYCenter= canvasHeight/2;
+		double canvasYCenter= getHeight()/2;
 		double halfHeadHeight = HEAD_HEIGHT / 2;
 		double YDimCenter = canvasYCenter - halfHeadHeight;
 		
-		GRect headRect = new GRect(xDimCenter, YDimCenter, HEAD_WIDTH,HEAD_HEIGHT); // center center width height
+		GRect headRect = new GRect(xDimCenter, YDimCenter, HEAD_WIDTH, HEAD_HEIGHT); // center center width height
 		headRect.setFilled(true);
 		headRect.setFillColor(Color.GRAY);
 		add(headRect);
 		
 	}
 /*pixels horizontally a quarter of the width of the head in from edges and one quarter of the distance down from
-the top of the head filled yellow.*/
+*the top of the head filled yellow.take the face location and width and divide them into fourths for eye placement 
+*/
 	private void leftEye() {
-		
-		double LOvalXDim = 4;
-		double LOvalYDim = 4 ;
+//		double sectFaceWidth= HEAD_WIDTH / 4;
+		double LOvalXDim = canvasXCenter;
+		double LOvalYDim = canvasYCenter;
 		GOval lEyeOval = new GOval (LOvalXDim, LOvalYDim, EYE_RADIUS,EYE_RADIUS);
 		lEyeOval.setFilled(true);
 		lEyeOval.setFillColor(Color.yellow);
@@ -66,8 +63,8 @@ the top of the head filled yellow.*/
 	
 	private void rightEye() {
 		
-		double ROvalXDim = 2;
-		double ROvalYDim = 2;
+		double ROvalXDim = canvasYCenter;
+		double ROvalYDim = canvasYCenter;
 		GOval rEyeOval = new GOval (ROvalXDim, ROvalYDim, EYE_RADIUS,EYE_RADIUS);
 		rEyeOval.setFilled(true);
 		rEyeOval.setFillColor(Color.yellow);
@@ -83,7 +80,11 @@ the top of the head filled yellow.*/
 
 	}
 	
-	private void arrangeEyes() {
+	private void buildFace() {
+		head();
+		leftEye();
+		rightEye();
+		mouth();
 		
 	}
 	
