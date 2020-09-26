@@ -11,8 +11,8 @@ import acm.program.*;
 
 public class RoboFace extends GraphicsProgram {
 // Constant Zone per assignment specifications 
-private static final int HEAD_WIDTH = 50;
-private static final int HEAD_HEIGHT = 100;
+private static final int HEAD_WIDTH = 75;
+private static final int HEAD_HEIGHT = 125;
 private static final int EYE_RADIUS = 20; 
 private static final int MOUTH_WIDTH = 40;
 private static final int MOUTH_HEIGHT = 20;
@@ -25,9 +25,9 @@ private static final int MOUTH_HEIGHT = 20;
 
 //head should be centered gray with black outline 
 	private void head() {
-		GRect headRect = new GRect(HEAD_WIDTH,HEAD_HEIGHT,100,100);
+		GRect headRect = new GRect(10,0, HEAD_WIDTH,HEAD_HEIGHT); // center center width height
+		headRect.setFilled(true);
 		headRect.setFillColor(Color.GRAY);
-		
 		add(headRect);
 		
 	}
