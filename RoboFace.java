@@ -17,14 +17,15 @@ import acm.program.*;
 
 public class RoboFace extends GraphicsProgram {
 // Constant Zone per assignment specifications 
-private static final int HEAD_WIDTH = 150;
-private static final int HEAD_HEIGHT = 400;
-private static final int EYE_RADIUS = 20; 
-private static final int MOUTH_WIDTH = 40;
-private static final int MOUTH_HEIGHT = 20;
-double canvasXCenter = getWidth() / 2;
-double canvasYCenter = getHeight() / 2;
-
+private static final int HEAD_WIDTH = 400;
+private static final int HEAD_HEIGHT = 450;
+private static final int EYE_RADIUS = 45; 
+private static final int MOUTH_WIDTH = 300;
+private static final int MOUTH_HEIGHT = 100;
+/* affected the settings diff than adding them in their own methods 
+*double canvasXCenter = getWidth() / 2;
+*double canvasYCenter = getHeight() / 2;
+*/
 	public void run() {
 		buildFace(); // first build a face then set it all to center 
 	}
@@ -33,15 +34,15 @@ double canvasYCenter = getHeight() / 2;
 	private void head() {
 //x location 
 		double canvasXCenter= getWidth() /2;
-		double halfHeadWidth = HEAD_WIDTH / 2;
-		double xDimCenter = canvasXCenter - halfHeadWidth;
+//		double halfHeadWidth = HEAD_WIDTH / 2;
+		double xHead = canvasXCenter - (HEAD_WIDTH / 2);
 		
 // y location 
 		double canvasYCenter= getHeight()/2;
-		double halfHeadHeight = HEAD_HEIGHT / 2;
-		double YDimCenter = canvasYCenter - halfHeadHeight;
+//		double halfHeadHeight = HEAD_HEIGHT / 2;
+		double yHead = canvasYCenter - (HEAD_HEIGHT / 2);
 		
-		GRect headRect = new GRect(/*xDimCenter, YDimCenter, */HEAD_WIDTH, HEAD_HEIGHT); 
+		GRect headRect = new GRect(xHead, yHead,HEAD_WIDTH, HEAD_HEIGHT); 
 		headRect.setFilled(true);
 		headRect.setFillColor(Color.GRAY);
 		add(headRect);
@@ -51,21 +52,26 @@ double canvasYCenter = getHeight() / 2;
 *the top of the head filled yellow.take the face location and width and divide them into fourths for eye placement 
 */
 	private void leftEye() {
+		double canvasXCenter= getWidth() /2;
+		double canvasYCenter= getWidth() /2;
+
 //		double sectFaceWidth= HEAD_WIDTH / 4;
-		double LOvalXDim = (HEAD_WIDTH / 4)- EYE_RADIUS ;
-		double LOvalYDim = (HEAD_HEIGHT/ 4)- EYE_RADIUS;
-		GOval lEyeOval = new GOval (LOvalXDim, LOvalYDim, EYE_RADIUS,EYE_RADIUS);
+		double xLeft = canvasXCenter - (HEAD_WIDTH / 4) - EYE_RADIUS ;
+		double yLeft = canvasYCenter - HEAD_HEIGHT/ 4 * 2 - EYE_RADIUS ;
+		GOval lEyeOval = new GOval (xLeft, yLeft, EYE_RADIUS,EYE_RADIUS);
 		lEyeOval.setFilled(true);
-		lEyeOval.setFillColor(Color.yellow);
+		lEyeOval.setFillColor(Color.YELLOW);
 		add(lEyeOval);
 		
 	}
 	
 	private void rightEye() {
-		
-		double ROvalXDim = (HEAD_WIDTH / 4) * 3 ;
-		double ROvalYDim = (HEAD_HEIGHT/ 4)- EYE_RADIUS;
-		GOval rEyeOval = new GOval (ROvalXDim, ROvalYDim, EYE_RADIUS,EYE_RADIUS);
+		double canvasXCenter= getWidth() /2;
+		double canvasYCenter= getWidth() /2;
+
+		double xRight = canvasXCenter + (HEAD_WIDTH/2) - (HEAD_WIDTH/4) ;
+		double yRight = canvasYCenter - HEAD_HEIGHT/ 4 * 2 - EYE_RADIUS ;
+		GOval rEyeOval = new GOval (xRight, yRight, EYE_RADIUS,EYE_RADIUS);
 		rEyeOval.setFilled(true);
 		rEyeOval.setFillColor(Color.yellow);
 		add(rEyeOval);
@@ -73,8 +79,11 @@ double canvasYCenter = getHeight() / 2;
 	}
 // centered in head x && 1/4 up from the bottom aka y dimension filled while 
 	private void mouth() {
-		double yMouth = ((HEAD_HEIGHT/ 4) *3 )- MOUTH_HEIGHT;
-		double xMouth = ((HEAD_WIDTH/2) - (MOUTH_WIDTH/2));
+		double canvasXCenter= getWidth() /2;
+		double canvasYCenter= getWidth() /2;
+
+		double yMouth = canvasYCenter - ((HEAD_WIDTH/2) - (MOUTH_WIDTH/2));
+		double xMouth = canvasXCenter- (MOUTH_WIDTH/2);
 		GRect mouthRect = new GRect(xMouth,yMouth, MOUTH_WIDTH,MOUTH_HEIGHT); 
 		mouthRect.setFilled(true);
 		mouthRect.setFillColor(Color.white);
@@ -83,12 +92,15 @@ double canvasYCenter = getHeight() / 2;
 	}
 	
 	private void buildFace() {
+		
 		head();
 		leftEye();
 		rightEye();
 		mouth();
 		
 	}
+	
+	
 	
  
 }
