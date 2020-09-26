@@ -11,7 +11,7 @@
  */
 
 import java.awt.Color;
-
+import acm.graphics.GCanvas;
 import acm.graphics.*;
 import acm.program.*;
 
@@ -33,7 +33,19 @@ private static final int MOUTH_HEIGHT = 20;
 
 //head should be centered gray with black outline 
 	private void head() {
-		GRect headRect = new GRect(10,0, HEAD_WIDTH,HEAD_HEIGHT); // center center width height
+//x location 
+		double canvasWidth= getWidth(); 
+		double canvasXCenter= canvasWidth/2;
+		double halfHeadWidth = HEAD_WIDTH / 2;
+		double xDimCenter = canvasXCenter - halfHeadWidth;
+		
+// y location 
+		double canvasHeight= getHeight(); 
+		double canvasYCenter= canvasHeight/2;
+		double halfHeadHeight = HEAD_HEIGHT / 2;
+		double YDimCenter = canvasYCenter - halfHeadHeight;
+		
+		GRect headRect = new GRect(xDimCenter, YDimCenter, HEAD_WIDTH,HEAD_HEIGHT); // center center width height
 		headRect.setFilled(true);
 		headRect.setFillColor(Color.GRAY);
 		add(headRect);
