@@ -26,8 +26,8 @@ private static final int MOUTH_HEIGHT = 20;
 	public void run() {
 		head();
 //		add( head() );
-		eyes();
-		eyes();
+		leftEye();
+		rightEye();
 		mouth();
 	}
 
@@ -53,11 +53,25 @@ private static final int MOUTH_HEIGHT = 20;
 	}
 /*pixels horizontally a quarter of the width of the head in from edges and one quarter of the distance down from
 the top of the head filled yellow.*/
-	private void eyes() {
-		GOval eyeOvals = new GOval (EYE_RADIUS,EYE_RADIUS);
-		eyeOvals.setFilled(true);
-		eyeOvals.setFillColor(Color.yellow);
-		add(eyeOvals);
+	private void leftEye() {
+		
+		double LOvalXDim = 4;
+		double LOvalYDim = 4 ;
+		GOval lEyeOval = new GOval (LOvalXDim, LOvalYDim, EYE_RADIUS,EYE_RADIUS);
+		lEyeOval.setFilled(true);
+		lEyeOval.setFillColor(Color.yellow);
+		add(lEyeOval);
+		
+	}
+	
+	private void rightEye() {
+		
+		double ROvalXDim = 2;
+		double ROvalYDim = 2;
+		GOval rEyeOval = new GOval (ROvalXDim, ROvalYDim, EYE_RADIUS,EYE_RADIUS);
+		rEyeOval.setFilled(true);
+		rEyeOval.setFillColor(Color.yellow);
+		add(rEyeOval);
 		
 	}
 // centered in head x && 1/4 up from the bottom aka y dimension filled while 
