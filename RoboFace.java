@@ -17,8 +17,8 @@ import acm.program.*;
 
 public class RoboFace extends GraphicsProgram {
 // Constant Zone per assignment specifications 
-private static final int HEAD_WIDTH = 75;
-private static final int HEAD_HEIGHT = 125;
+private static final int HEAD_WIDTH = 150;
+private static final int HEAD_HEIGHT = 400;
 private static final int EYE_RADIUS = 20; 
 private static final int MOUTH_WIDTH = 40;
 private static final int MOUTH_HEIGHT = 20;
@@ -41,7 +41,7 @@ double canvasYCenter = getHeight() / 2;
 		double halfHeadHeight = HEAD_HEIGHT / 2;
 		double YDimCenter = canvasYCenter - halfHeadHeight;
 		
-		GRect headRect = new GRect(xDimCenter, YDimCenter, HEAD_WIDTH, HEAD_HEIGHT); // center center width height
+		GRect headRect = new GRect(/*xDimCenter, YDimCenter, */HEAD_WIDTH, HEAD_HEIGHT); 
 		headRect.setFilled(true);
 		headRect.setFillColor(Color.GRAY);
 		add(headRect);
@@ -52,8 +52,8 @@ double canvasYCenter = getHeight() / 2;
 */
 	private void leftEye() {
 //		double sectFaceWidth= HEAD_WIDTH / 4;
-		double LOvalXDim = canvasXCenter;
-		double LOvalYDim = canvasYCenter;
+		double LOvalXDim = (HEAD_WIDTH / 4)- EYE_RADIUS ;
+		double LOvalYDim = (HEAD_HEIGHT/ 4)- EYE_RADIUS;
 		GOval lEyeOval = new GOval (LOvalXDim, LOvalYDim, EYE_RADIUS,EYE_RADIUS);
 		lEyeOval.setFilled(true);
 		lEyeOval.setFillColor(Color.yellow);
@@ -63,8 +63,8 @@ double canvasYCenter = getHeight() / 2;
 	
 	private void rightEye() {
 		
-		double ROvalXDim = canvasYCenter;
-		double ROvalYDim = canvasYCenter;
+		double ROvalXDim = (HEAD_WIDTH / 4) * 3 ;
+		double ROvalYDim = (HEAD_HEIGHT/ 4)- EYE_RADIUS;
 		GOval rEyeOval = new GOval (ROvalXDim, ROvalYDim, EYE_RADIUS,EYE_RADIUS);
 		rEyeOval.setFilled(true);
 		rEyeOval.setFillColor(Color.yellow);
@@ -73,7 +73,9 @@ double canvasYCenter = getHeight() / 2;
 	}
 // centered in head x && 1/4 up from the bottom aka y dimension filled while 
 	private void mouth() {
-		GRect mouthRect = new GRect(10,0, MOUTH_WIDTH,MOUTH_HEIGHT); // center center width height
+		double yMouth = ((HEAD_HEIGHT/ 4) *3 )- MOUTH_HEIGHT;
+		double xMouth = ((HEAD_WIDTH/2) - (MOUTH_WIDTH/2));
+		GRect mouthRect = new GRect(xMouth,yMouth, MOUTH_WIDTH,MOUTH_HEIGHT); 
 		mouthRect.setFilled(true);
 		mouthRect.setFillColor(Color.white);
 		add(mouthRect);
