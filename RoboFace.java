@@ -23,8 +23,10 @@ private static final int EYE_RADIUS = 80;
 private static final int MOUTH_WIDTH = 300;
 private static final int MOUTH_HEIGHT = 100;
 /* affected the settings diff than adding them in their own methods so I could not build it all and then set it to the center 
-*double canvasXCenter = getWidth() / 2;
-*double canvasYCenter = getHeight() / 2;
+		double canvasXCenter= getWidth() /2;
+		double canvasYCenter= getHeight() /2;
+		double sectFaceWidth= HEAD_WIDTH / 4;
+		double sectFaceHeight= HEAD_HEIGHT / 4;
 */
 	public void run() {
 		buildFace(); // first build a face then set it all to center
@@ -91,7 +93,7 @@ private static final int MOUTH_HEIGHT = 100;
 		double sectFaceWidth= HEAD_WIDTH / 4;
 		double sectFaceHeight= HEAD_HEIGHT / 4;
 
-		double yMouth = canvasYCenter - (sectFaceWidth - (MOUTH_WIDTH/2));
+		double yMouth = canvasYCenter - (sectFaceHeight - (MOUTH_WIDTH/2));
 		double xMouth = canvasXCenter- (MOUTH_WIDTH/2);
 		GRect mouthRect = new GRect(xMouth,yMouth, MOUTH_WIDTH,MOUTH_HEIGHT); 
 		mouthRect.setFilled(true);
