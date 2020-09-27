@@ -64,7 +64,7 @@ private static final int MOUTH_HEIGHT = 100;
 
 		GOval lEyeOval = new GOval (xLeft, yLeft, EYE_RADIUS,EYE_RADIUS);
 		lEyeOval.setFilled(true);
-		lEyeOval.setFillColor(Color.GREEN);
+		lEyeOval.setFillColor(Color.yellow);
 		add(lEyeOval);
 		
 	}
